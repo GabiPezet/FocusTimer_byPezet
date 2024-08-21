@@ -1,4 +1,4 @@
-package com.example.focustimer.ui.theme
+package com.example.focustimer.presentation.theme
 
 import android.app.Activity
 import android.os.Build
@@ -62,7 +62,11 @@ fun FocusTimerTheme(
       else -> LightColorScheme
     }
 
-    val dimensions = if(windowSize > WindowWidthSizeClass.Compact){tabletDimens} else {defaultDimens}
+    val dimensions = if(windowSize > WindowWidthSizeClass.Compact){
+        tabletDimens
+    } else {
+        defaultDimens
+    }
     
     ProvideDimens(dimens = dimensions) {
         MaterialTheme(
