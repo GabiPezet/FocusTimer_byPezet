@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.focustimer.presentation.theme.FocusTimerTheme
 
 @Composable
@@ -35,5 +36,20 @@ fun TimerTypeItem(
             style = MaterialTheme.typography.bodyMedium,
             color = textColor
         )
+    }
+}
+
+// 1- Anotación de la Preview
+@Preview(
+    name = "PREVIO DEL TimerTypeItem",
+    showBackground = true,
+)
+// 2- Composable para la Preview
+@Composable
+fun TimerTypeItem_Preview() {
+// 3- Theme (Tema del proyecto)
+    FocusTimerTheme {
+        TimerTypeItem(text = "On Focus",
+            textColor = Color.Black)
     }
 }

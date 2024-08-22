@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.focustimer.presentation.theme.FocusTimerTheme
 
 @Composable
@@ -36,5 +37,22 @@ fun CustomButton(
             style = MaterialTheme.typography.bodyLarge,
             color = textColor
         )
+    }
+}
+
+// 1- Anotación de la Preview
+@Preview(
+    name = "PREVIO DEL CustomButton",
+    showBackground = true,
+)
+// 2- Composable para la Preview
+@Composable
+fun CustomButton_Preview() {
+// 3- Theme (Tema del proyecto)
+    FocusTimerTheme {
+        CustomButton(
+            text = "TimerTimer",
+            buttonColor = Color.LightGray,
+            textColor = Color.Black)
     }
 }
