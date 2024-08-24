@@ -1,5 +1,6 @@
 package com.example.focustimer.presentation.home
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,6 +11,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
@@ -22,8 +25,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.focustimer.R
 import com.example.focustimer.presentation.components.AutoResizedText
+import com.example.focustimer.presentation.components.BorderedIcon
 import com.example.focustimer.presentation.components.CircleDot
+import com.example.focustimer.presentation.components.TimerTypeItem
 import com.example.focustimer.presentation.theme.FocusTimerTheme
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun HomeScreen() {
@@ -63,6 +69,9 @@ fun HomeScreen() {
             CircleDot(color = MaterialTheme.colorScheme.tertiary)
         }
         Spacer(modifier = Modifier.height(FocusTimerTheme.dimens.spacerMedium))
+        TimerSession(
+            timer = "01:23"
+        )
     }
 }
 
@@ -70,12 +79,77 @@ fun HomeScreen() {
 fun TimerSession(
     modifier: Modifier = Modifier,
     timer: String,
-    onIncresedTap: () -> Unit = {},
-    onDecresedTap: () -> Unit = {},
+    onIncreaseTap: () -> Unit = {},
+    onDecreaseTap: () -> Unit = {},
 ) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            BorderedIcon(
+                icon = R.drawable.ic_minus,
+                onTap = onDecreaseTap
+            )
+            Spacer(modifier = Modifier.height(FocusTimerTheme.dimens.spacerMedium))
+        }
+        AutoResizedText(
+            text = timer,
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(6f)
+                .align(Alignment.CenterVertically),
+            textStyle = MaterialTheme.typography.displayLarge.copy(
+                color = MaterialTheme.colorScheme.primary,
+                textAlign = TextAlign.Center
+            )
+        )
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            BorderedIcon(
+                icon = R.drawable.ic_plus,
+                onTap = onIncreaseTap
+            )
+            Spacer(modifier = Modifier.height(FocusTimerTheme.dimens.spacerMedium))
+        }
+    }
 }
 
+@Composable
+fun TimerTypeSession(
+    modifier: Modifier = Modifier,
+    onTap: () -> Unit = {}
+){
+    val gridCount: Int = 3
+    val itemsSpacing: Arrangement.HorizontalOrVertical = Arrangement.spacedBy(FocusTimerTheme.dimens.paddingNormal)
+    LazyVerticalGrid(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(FocusTimerTheme.dimens.spacerLarge),
+        columns = GridCells.Fixed(gridCount),
+        horizontalArrangement = itemsSpacing,
+        verticalArrangement = itemsSpacing
+        ){
+        item(
+            key = "SB_ShortBreak"
+        ) {
+            TimerTypeItem(
+                text = "Short Break",
+                textColor = MaterialTheme.colorScheme.primary)
+        }
+    }
 
+}
 
 
 
