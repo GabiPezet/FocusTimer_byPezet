@@ -34,15 +34,13 @@ fun InformationItem(
     }
 }
 
-// 1- Anotación de la Preview
+
 @Preview(
     name = "PREVIO DEL InformationItem",
     showBackground = true,
 )
-// 2- Composable para la Preview
 @Composable
 fun InformationItem_Preview() {
-// 3- Theme (Tema del proyecto)
     FocusTimerTheme {
         InformationItem(
             text = "On Focus",

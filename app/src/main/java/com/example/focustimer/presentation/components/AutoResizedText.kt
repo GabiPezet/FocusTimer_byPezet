@@ -37,15 +37,13 @@ fun AutoResizedText(
     )
 }
 
-// 1- Anotación de la Preview
+
 @Preview(
     name = "PREVIO DEL AutoResizedText",
     showBackground = true,
 )
-// 2- Composable para la Preview
 @Composable
 fun AutoResizedText_Preview() {
-// 3- Theme (Tema del proyecto)
     FocusTimerTheme {
         AutoResizedText(text = "Focus Timer")
     }

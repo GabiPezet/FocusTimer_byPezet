@@ -39,15 +39,13 @@ fun TimerTypeItem(
     }
 }
 
-// 1- Anotación de la Preview
+
 @Preview(
     name = "PREVIO DEL TimerTypeItem",
     showBackground = true,
 )
-// 2- Composable para la Preview
 @Composable
 fun TimerTypeItem_Preview() {
-// 3- Theme (Tema del proyecto)
     FocusTimerTheme {
         TimerTypeItem(text = "On Focus",
             textColor = Color.Black)

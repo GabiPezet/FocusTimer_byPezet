@@ -40,15 +40,13 @@ fun CustomButton(
     }
 }
 
-// 1- Anotación de la Preview
+
 @Preview(
     name = "PREVIO DEL CustomButton",
     showBackground = true,
 )
-// 2- Composable para la Preview
 @Composable
 fun CustomButton_Preview() {
-// 3- Theme (Tema del proyecto)
     FocusTimerTheme {
         CustomButton(
             text = "TimerTimer",

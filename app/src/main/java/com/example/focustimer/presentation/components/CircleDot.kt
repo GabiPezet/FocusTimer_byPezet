@@ -19,22 +19,20 @@ fun CircleDot(
 ) {
     Box(
         modifier = modifier
-            .size(FocusTimerTheme.dimens.iconSizeNormal)
+            .size(FocusTimerTheme.dimens.iconSizeSmall)
             .clip(shape = CircleShape)
             .background(color)
     )
 }
 
 
-// 1- Anotación de la Preview
+
 @Preview(
     name = "PREVIO DEL CircleDot",
     showBackground = true,
 )
-// 2- Composable para la Preview
 @Composable
 fun CircleDot_Preview() {
-// 3- Theme (Tema del proyecto)
     FocusTimerTheme {
         CircleDot(
             color = Color.Green
