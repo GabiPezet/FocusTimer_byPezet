@@ -27,6 +27,8 @@ import com.example.focustimer.R
 import com.example.focustimer.presentation.components.AutoResizedText
 import com.example.focustimer.presentation.components.BorderedIcon
 import com.example.focustimer.presentation.components.CircleDot
+import com.example.focustimer.presentation.components.CustomButton
+import com.example.focustimer.presentation.components.InformationItem
 import com.example.focustimer.presentation.components.TimerTypeItem
 import com.example.focustimer.presentation.theme.FocusTimerTheme
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
@@ -70,8 +72,46 @@ fun HomeScreen() {
         }
         Spacer(modifier = Modifier.height(FocusTimerTheme.dimens.spacerMedium))
         TimerSession(
-            timer = "01:23"
+            timer = "01:23",
+            onIncreaseTap = {
+//                TODO: Implement logic
+            },
+            onDecreaseTap = {
+//                TODO: Implement logic
+            }
         )
+        Spacer(modifier = Modifier.height(FocusTimerTheme.dimens.spacerMedium))
+        TimerTypeSession(
+            onTap = {
+//               TODO Implement logic
+            }
+        )
+        Spacer(modifier = Modifier.height(FocusTimerTheme.dimens.spacerMedium))
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            CustomButton(text = "Start",
+                textColor = MaterialTheme.colorScheme.surface,
+                buttonColor = MaterialTheme.colorScheme.primary,
+                onTap = {
+//                    TODO: Implement logic
+                }
+            )
+            CustomButton(text = "Reset",
+                textColor = MaterialTheme.colorScheme.primary,
+                buttonColor = MaterialTheme.colorScheme.surface,
+                onTap = {
+//                    TODO: Implement logic
+                }
+            )
+        }
+        Spacer(modifier = Modifier.height(FocusTimerTheme.dimens.spacerMedium))
+        InformationSession(
+            modifier = Modifier.weight(1f),
+            round = "11",
+            time = "59:00")
     }
 }
 
@@ -141,16 +181,61 @@ fun TimerTypeSession(
         verticalArrangement = itemsSpacing
         ){
         item(
+            key = "FT_ShortBreak"
+        ) {
+            TimerTypeItem(
+                text = "Focus Timer",
+                textColor = MaterialTheme.colorScheme.primary)
+        }
+        item(
             key = "SB_ShortBreak"
         ) {
             TimerTypeItem(
                 text = "Short Break",
-                textColor = MaterialTheme.colorScheme.primary)
+                textColor = MaterialTheme.colorScheme.secondary)
+        }
+        item(
+            key = "LB_ShortBreak"
+        ) {
+            TimerTypeItem(
+                text = "Long Break",
+                textColor = MaterialTheme.colorScheme.secondary)
         }
     }
 
 }
 
+@Composable
+fun InformationSession(
+    modifier: Modifier = Modifier,
+    round: String, // me muestra el número de ronda de la sesión
+    time: String, // me muestra el tiempo que ya ha corrido del Timer
+){
+    Box(
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.BottomCenter
+    ){
+        Row (
+            modifier = Modifier.align(Alignment.BottomCenter)
+        ){
+            InformationItem(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+                text = round,
+                label = "rounds")
+            Spacer(modifier = modifier
+                .fillMaxWidth()
+                .weight(1f))
+            InformationItem(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+                text = time,
+                label = "time")
+        }
+    }
+}
 
 
 

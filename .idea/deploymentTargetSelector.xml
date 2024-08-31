@@ -4,7 +4,7 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-08-19T01:51:44.292631200Z">
+        <DropdownSelection timestamp="2024-08-31T01:01:21.218874500Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\gabri\.android\avd\Pixel_6_Pro_API_33_Emu_.avd" />
@@ -15,7 +15,7 @@
       </SelectionState>
       <SelectionState runConfigName="GreetingPreview">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-08-18T20:23:41.094672400Z">
+        <DropdownSelection timestamp="2024-08-31T01:00:56.691963600Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\gabri\.android\avd\Pixel_6_Pro_API_33_Emu_.avd" />

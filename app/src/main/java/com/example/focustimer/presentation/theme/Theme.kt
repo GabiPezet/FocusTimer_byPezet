@@ -24,7 +24,7 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = primaryWhite,
+    primary = primaryBlack,
     secondary = gray,
     tertiary = lightGray,
     surface = primaryWhite,
@@ -37,10 +37,9 @@ private val LocalDimens = staticCompositionLocalOf { defaultDimens } // Por defe
 fun ProvideDimens(
     dimens: Dimens,
     content: @Composable () -> Unit
-        )
-    {
+) {
     val dimensionSet = remember { dimens }  // el remember guarda el estado del dimensionSet
-        CompositionLocalProvider(LocalDimens provides dimensionSet, content = content )
+    CompositionLocalProvider(LocalDimens provides dimensionSet, content = content)
 }
 
 @Composable
