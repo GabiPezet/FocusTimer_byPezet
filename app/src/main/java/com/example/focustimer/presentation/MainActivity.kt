@@ -17,7 +17,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.focustimer.presentation.home.HomeScreen
+import com.example.focustimer.presentation.home.HomeScreenViewModel
 import com.example.focustimer.presentation.theme.FocusTimerTheme
+
+internal val viewModel: HomeScreenViewModel = HomeScreenViewModel()
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
@@ -31,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    HomeScreen()
+                    HomeScreen(viewModel = HomeScreenViewModel())
                 }
             }
         }
