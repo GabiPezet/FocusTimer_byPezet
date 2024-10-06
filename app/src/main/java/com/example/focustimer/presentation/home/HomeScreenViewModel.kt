@@ -78,15 +78,19 @@ class HomeScreenViewModel: ViewModel() {
     }
 
     fun onIncreaseTime() {
-        _timerValue.value += ONE_MIN_IN_MILLIS
-        onResetTime()
+        if(!isTimerActive){
+            _timerValue.value += ONE_MIN_IN_MILLIS
+            onResetTime()
+        }
     }
 
     fun onDecreaseTime() {
-        _timerValue.value -= ONE_MIN_IN_MILLIS
-        onResetTime()
-        if (_timerValue.value < 0) {
-            onCancelTimer()
+        if(!isTimerActive) {
+            _timerValue.value -= ONE_MIN_IN_MILLIS
+            onResetTime()
+            if (_timerValue.value < 0) {
+                onCancelTimer()
+            }
         }
     }
 
