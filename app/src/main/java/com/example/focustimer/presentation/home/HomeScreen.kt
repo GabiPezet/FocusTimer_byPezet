@@ -35,6 +35,7 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun HomeScreen() {
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -75,6 +76,7 @@ fun HomeScreen() {
             timer = "01:23",
             onIncreaseTap = {
 //                TODO: Implement logic
+
             },
             onDecreaseTap = {
 //                TODO: Implement logic
