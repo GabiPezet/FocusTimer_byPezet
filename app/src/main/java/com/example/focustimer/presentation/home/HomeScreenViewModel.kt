@@ -28,14 +28,13 @@ class HomeScreenViewModel: ViewModel() {
     private val _todayTimeState = mutableStateOf<Long>(0)   //based on Private set - Public get
     val todayTimeState = _todayTimeState
 
-
     fun onStartTimer() {
 
         viewModelScope.launch {
             timer = object : CountDownTimer(
                 _timerValue.value,
                 ONE_SEC_IN_MILLIS
-            ){
+            ) {
                 override fun onTick(millisUntilFinished: Long) {
                     _timerValue.value = millisUntilFinished
                     _todayTimeState.value += ONE_SEC_IN_MILLIS
@@ -46,48 +45,47 @@ class HomeScreenViewModel: ViewModel() {
                 }
             }
             timer.start().also {
-                if (!isTimerActive){
+                if (!isTimerActive) {
                     _roundState.value += 1
                     isTimerActive = true
                 }
             }
-
         }
     }
 
     fun onCancelTimer(reset: Boolean = false) {
-        try{
+        try {
             timer.cancel()
-        } catch (_: UninitializedPropertyAccessException){
+        } catch (_: UninitializedPropertyAccessException) {
             // Handle better the timer errors
         }
-        if (!isTimerActive || reset){
+        if (!isTimerActive || reset) {
             _timerValue.value = _timerTypeState.value.timeToMillis()
         }
         isTimerActive = false
     }
 
-    private fun onResetTime(){
-        if(isTimerActive){
+    private fun onResetTime() {
+        if (isTimerActive) {
             onCancelTimer()
             onStartTimer()
         }
     }
 
-    fun onUpdateType(timerType: TimerTypeEnum){
+    fun onUpdateType(timerType: TimerTypeEnum) {
         _timerTypeState.value = timerType
         onCancelTimer(true)
     }
 
-    fun onIncreaseTime(){
+    fun onIncreaseTime() {
         _timerValue.value += ONE_MIN_IN_MILLIS
         onResetTime()
     }
 
-    fun onDecreaseTime(){
+    fun onDecreaseTime() {
         _timerValue.value -= ONE_MIN_IN_MILLIS
         onResetTime()
-        if(_timerValue.value < 0){
+        if (_timerValue.value < 0) {
             onCancelTimer()
         }
     }
@@ -101,18 +99,18 @@ class HomeScreenViewModel: ViewModel() {
     }
 
     @SuppressLint("DefaultLocale")
-    fun millisToHours(value: Long): String{
+    fun millisToHours(value: Long): String {
         val totalSecond = value.div(ONE_SEC_IN_MILLIS)
         val seconds = (totalSecond.rem(ONE_MIN_IN_SEC))
         val totalMinutes = (totalSecond.div(ONE_MIN_IN_SEC)).toInt()
         val hours = (totalMinutes.rem(ONE_HOUR_IN_MIN))
         val minutes = (totalMinutes.rem(ONE_HOUR_IN_MIN))
 
-        return if (totalMinutes <= ONE_HOUR_IN_MIN){
+        return if (totalMinutes <= ONE_HOUR_IN_MIN) {
             String.format("%02dm %02ds", minutes, seconds)
-        }else {
+        } else {
             String.format("%02dh %02dm", hours, minutes)
         }
-        
+
     }
 }
